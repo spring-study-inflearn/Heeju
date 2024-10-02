@@ -1,6 +1,8 @@
 package spring.core;
 
+import spring.core.discount.DiscountPolicy;
 import spring.core.discount.FixDiscountPolicy;
+import spring.core.member.MemberRepository;
 import spring.core.member.MemberService;
 import spring.core.member.MemberServiceImpl;
 import spring.core.member.MemoryMemberRepository;
@@ -14,15 +16,22 @@ public class AppConfig {
     // 이것이 생성자 주입.
     public MemberService memberService() {
         return new MemberServiceImpl
-                (new MemoryMemberRepository());
+                (memberRepository());
+    }
+    public MemberRepository memberRepository() {
+        return new MemoryMemberRepository();
+    }
+
+    public DiscountPolicy discountPolicy(){
+        return new FixDiscountPolicy();
     }
 
     // 여기서는 쓸 구현체를 명시해서 넣어주고 원래의 orderservicimple에서는
     // 부모의(?) 타입으로 해서 넘겨주기, 인터페이스에만 의존할 수 있게
     public OrderService orderService() {
         return new OrderServiceImpl(
-                new MemoryMemberRepository(),
-                new FixDiscountPolicy()
+                memberRepository(),
+                discountPolicy()
         );
     }
 }
