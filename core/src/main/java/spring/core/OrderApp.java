@@ -10,8 +10,11 @@ import spring.core.order.OrderServiceImpl;
 
 public class OrderApp {
     public static void main(String[] args) {
-        MemberServiceImpl memberService = new MemberServiceImpl();
-        OrderService orderService = new OrderServiceImpl();
+        // appConfig의 메서드 호출로 구체클래스 지정
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
+        OrderService orderService = appConfig.orderService();
+
         Long memberId = 1L;
         Member member = new Member(memberId, "memberA", Grade.VIP);
         memberService.join(member);
