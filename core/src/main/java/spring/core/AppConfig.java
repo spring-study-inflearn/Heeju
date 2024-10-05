@@ -12,7 +12,7 @@ import spring.core.member.MemoryMemberRepository;
 import spring.core.order.OrderService;
 import spring.core.order.OrderServiceImpl;
 
-@Configuration
+@Configuration  // singleTon을 보장해주는 annotation, 없으면 같은 인스턴스 보장X, memberService 3번 호출
 public class AppConfig {
     // 원래는 memberserviceimpl에서
     // private final MemberRespository memberRespository = new MemoryMemberRespository(); 처럼 구현객체를 설정해줬다.
