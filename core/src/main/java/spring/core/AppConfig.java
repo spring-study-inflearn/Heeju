@@ -23,11 +23,13 @@ bean을 붙여주면 컨테이너에 등록됨
  */
     @Bean
     public MemberService memberService() {
+        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl
                 (memberRepository());
     }
     @Bean
     public MemberRepository memberRepository() {
+        System.out.println("call AppConfig.memberService");
         return new MemoryMemberRepository();
     }
     @Bean
@@ -40,6 +42,7 @@ bean을 붙여주면 컨테이너에 등록됨
     // 부모의(?) 타입으로 해서 넘겨주기, 인터페이스에만 의존할 수 있게
     @Bean
     public OrderService orderService() {
+        System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(
                 memberRepository(),
                 discountPolicy()
