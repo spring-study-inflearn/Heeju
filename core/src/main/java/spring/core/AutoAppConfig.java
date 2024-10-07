@@ -1,12 +1,16 @@
 package spring.core;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import spring.core.member.MemberRepository;
+import spring.core.member.MemoryMemberRepository;
 
-@Component
+//@Component
+@Configuration
 @ComponentScan(
         excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Configuration.class)
 )
@@ -17,5 +21,8 @@ import org.springframework.stereotype.Controller;
  */
 
 public class AutoAppConfig {
-
+    @Bean(name = "memoryMemberRepository")
+    public MemberRepository memberRepository() {
+        return new MemoryMemberRepository();
+    }
 }
