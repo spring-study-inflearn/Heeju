@@ -9,8 +9,7 @@ import org.springframework.stereotype.Controller;
 import spring.core.member.MemberRepository;
 import spring.core.member.MemoryMemberRepository;
 
-//@Component
-@Configuration
+@Component
 @ComponentScan(
         excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Configuration.class)
 )
@@ -21,8 +20,8 @@ import spring.core.member.MemoryMemberRepository;
  */
 
 public class AutoAppConfig {
-    @Bean(name = "memoryMemberRepository")
-    public MemberRepository memberRepository() {
-        return new MemoryMemberRepository();
-    }
+//    @Bean(name = "memoryMemberRepository")
+//    public MemberRepository memberRepository() {
+//        return new MemoryMemberRepository();
+//    }
 }
