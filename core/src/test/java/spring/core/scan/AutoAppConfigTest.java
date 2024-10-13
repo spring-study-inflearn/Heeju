@@ -20,7 +20,7 @@ public class AutoAppConfigTest {
         Assertions.assertThat(memberService).isInstanceOf(MemberService.class);
 
         OrderServiceImpl bean = ac.getBean(OrderServiceImpl.class);
-        DiscountPolicy discountPolicy = bean.getRateDiscountPolicy();
+        DiscountPolicy discountPolicy = bean.getDiscountPolicy();
         System.out.println("discountPolicy = " + discountPolicy);
         MemberRepository memberRepository = bean.getMemberRepository();
         System.out.println("test memberRepository = " + memberRepository);
