@@ -8,6 +8,7 @@ import spring.core.AutoAppConfig;
 import spring.core.discount.DiscountPolicy;
 import spring.core.member.MemberRepository;
 import spring.core.member.MemberService;
+import spring.core.order.OrderService;
 import spring.core.order.OrderServiceImpl;
 
 public class AutoAppConfigTest {
@@ -19,6 +20,8 @@ public class AutoAppConfigTest {
         Assertions.assertThat(memberService).isInstanceOf(MemberService.class);
 
         OrderServiceImpl bean = ac.getBean(OrderServiceImpl.class);
+        DiscountPolicy discountPolicy = bean.getRateDiscountPolicy();
+        System.out.println("discountPolicy = " + discountPolicy);
         MemberRepository memberRepository = bean.getMemberRepository();
         System.out.println("test memberRepository = " + memberRepository);
 
