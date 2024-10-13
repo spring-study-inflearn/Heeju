@@ -1,11 +1,14 @@
 package spring.core;
 
+import jakarta.annotation.Nullable;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import spring.core.member.Member;
 import spring.core.member.MemberRepository;
 import spring.core.member.MemoryMemberRepository;
 
@@ -24,4 +27,5 @@ public class AutoAppConfig {
     public MemberRepository memberRepository() {
         return new MemoryMemberRepository();
     }
+
 }
