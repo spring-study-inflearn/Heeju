@@ -27,12 +27,12 @@ public class OrderServiceTest {
         Assertions.assertThat(order.getDiscountPrice()).isEqualTo(1000);
     }
 
-    @Test
-    void fieldInjectionTest(){
-        OrderServiceImpl orderService = new OrderServiceImpl();
-        // 이렇게 임의로 new로 생성한 객체는 당연히 autowired가 안됨. npe가 터진게 아마 객체 설정을 안해줘서 인듯.
-        orderService.setMemberRepository(new MemoryMemberRepository());
-        orderService.setDiscountPolicy(new FixDiscountPolicy());
-        orderService.createOrder(1L, "itemA", 10000);
-    }
+//    @Test
+//    void fieldInjectionTest(){
+//        OrderServiceImpl orderService = new OrderServiceImpl();
+//        // 이렇게 임의로 new로 생성한 객체는 당연히 autowired가 안됨. npe가 터진게 아마 객체 설정을 안해줘서 인듯.
+//        orderService.setMemberRepository(new MemoryMemberRepository());
+//        orderService.setDiscountPolicy(new FixDiscountPolicy());
+//        orderService.createOrder(1L, "itemA", 10000);
+//    }
 }

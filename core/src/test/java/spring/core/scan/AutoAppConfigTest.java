@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import spring.core.AutoAppConfig;
+import spring.core.discount.DiscountPolicy;
 import spring.core.member.MemberRepository;
 import spring.core.member.MemberService;
 import spring.core.order.OrderServiceImpl;
