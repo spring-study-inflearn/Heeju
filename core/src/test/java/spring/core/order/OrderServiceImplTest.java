@@ -1,15 +1,12 @@
 package spring.core.order;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import spring.core.discount.FixDiscountPolicy;
 import spring.core.member.Grade;
 import spring.core.member.Member;
-import spring.core.member.MemberRepository;
 import spring.core.member.MemoryMemberRepository;
 
-public class OrederServiceImpl {
+public class OrderServiceImplTest {
 
     @Test
     void createOrder() {

@@ -1,5 +1,7 @@
 package spring.core.order;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import spring.core.discount.DiscountPolicy;
@@ -9,6 +11,8 @@ import spring.core.member.MemberRepository;
 import spring.core.member.MemoryMemberRepository;
 
 @Component
+@RequiredArgsConstructor
+@Getter
 public class OrderServiceImpl implements OrderService {
     // interface에만 의존할 수 있게 appconfig로 구체클래스 명시 여기선 생성자주입으로 해당 구체 클래스로 초기화해줌
 
@@ -16,13 +20,13 @@ public class OrderServiceImpl implements OrderService {
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
-    @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy){
-        System.out.println("cons memberRepository = " + memberRepository);
-        System.out.println("cons discountPolicy = " + discountPolicy);
-        this.memberRepository=memberRepository;
-        this.discountPolicy=discountPolicy;
-    }
+//    @Autowired - 생성자 하나일땐 생략가능 : @RequiredArgsConstructor 추가로 해당 생성자 삭제
+//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy){
+//        System.out.println("cons memberRepository = " + memberRepository);
+//        System.out.println("cons discountPolicy = " + discountPolicy);
+//        this.memberRepository=memberRepository;
+//        this.discountPolicy=discountPolicy;
+//    }
 
     /* 필드주입
     @Autowired private MemberRepository memberRepository;
@@ -62,9 +66,4 @@ public class OrderServiceImpl implements OrderService {
     }
 
 
-    // 테스트용도
-    public MemberRepository getMemberRepository() {
-
-        return memberRepository;
-    }
 }
