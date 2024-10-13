@@ -11,14 +11,31 @@ import spring.core.member.MemoryMemberRepository;
 @Component
 public class OrderServiceImpl implements OrderService {
     // interface에만 의존할 수 있게 appconfig로 구체클래스 명시 여기선 생성자주입으로 해당 구체 클래스로 초기화해줌
-    private final MemberRepository memberRepository;
-    private final DiscountPolicy discountPolicy;
+    private MemberRepository memberRepository;
+    private DiscountPolicy discountPolicy;
+
+    // setter 주입
+    @Autowired
+    public void setMemberRepository(MemberRepository memberRepository){
+        System.out.println("setter memberRepository = " + memberRepository);
+        this.memberRepository = memberRepository;
+    }
 
     @Autowired
+    public void setDiscountPolicy(DiscountPolicy discountPolicy){
+        System.out.println("setter discountPolicy = " + discountPolicy);
+        this.discountPolicy = discountPolicy;
+    }
+
+    //생성자 주입일때만 final을 붙일 수 있다. setter 주입일때는 아래 코드 주석처리하면 됨. 현재 없으면 컴파일 오류 떠서 그대로 올림.
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy){
+        System.out.println("cons memberRepository = " + memberRepository);
+        System.out.println("cons discountPolicy = " + discountPolicy);
         this.memberRepository=memberRepository;
         this.discountPolicy=discountPolicy;
     }
+
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
@@ -28,8 +45,10 @@ public class OrderServiceImpl implements OrderService {
         return new Order(memberId, itemName, itemPrice, discountPrice);
     }
 
+
     // 테스트용도
     public MemberRepository getMemberRepository() {
+
         return memberRepository;
     }
 }
