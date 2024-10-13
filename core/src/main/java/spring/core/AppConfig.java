@@ -44,9 +44,10 @@ bean을 붙여주면 컨테이너에 등록됨
     @Bean
     public OrderService orderService() {
         System.out.println("call AppConfig.orderService");
-        return new OrderServiceImpl(
-                memberRepository(),
-                discountPolicy()
-        );
+//        return new OrderServiceImpl(
+//                memberRepository(),
+//                discountPolicy()
+//        );
+        return null;
     }
 }
