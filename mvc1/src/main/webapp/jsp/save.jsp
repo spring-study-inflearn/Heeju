@@ -27,6 +27,6 @@
     <li>username = <%=member.getUsername()%></li>
     <li>age=<%=member.getAge()%></li>
 </ul>
-<a href = "../../index.html">메인으로</a>
+<a href = "index.html">메인으로</a>
 </body>
 </html>
